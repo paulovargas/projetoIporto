@@ -1,4 +1,4 @@
 Homestead.yaml
 Homestead.json
-node_modules
+/node_modules
 .env
