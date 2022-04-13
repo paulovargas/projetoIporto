@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 // [[Modulos da Aplicação]]
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 // []
 // [[Providers da Aplicação]]
@@ -21,8 +19,6 @@ import { DashboardIndexComponent } from './index';
     LoadingBarHttpClientModule,
     CommonModule,
     RouterModule.forChild(LocalAppModuleRoutes),
-    NgbModule,
-    Angular2FontawesomeModule,
     ProgressbarModule
   ],
   declarations: [

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // -----------------------------------------------------------------------------
-import { LayoutSiteComponent } from '../pages/core';
+import { LayoutSiteComponent } from '../project/core';
 // -----------------------------------------------------------------------------
 
 const routes: Routes = [
@@ -11,13 +11,9 @@ const routes: Routes = [
     component: LayoutSiteComponent,
     children: [
       {
-        path: '',
-        loadChildren: '../pages/modules/site/dashboard/module#DashboardModule'
+        path: "",
+        loadChildren: () => import("../project/modules/site/dashboard/module").then((m) => m.DashboardModule),
       },
-      {
-        path: 'features',
-        loadChildren: '../pages/modules/page/module#PageModule'
-      }
     ]
   },
   {
@@ -26,7 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: '../pages/modules/page/module#PageModule'
+        loadChildren: () => import("../project/modules/page/module").then((m) => m.PageModule),
       }
     ]
   }

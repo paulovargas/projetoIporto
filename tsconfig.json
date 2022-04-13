@@ -2,21 +2,24 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "~project/*": ["./src/project/*"],
+      "~interfaces/*": ["./src/project/interfaces/*"],
+      "~modules/*": ["./src/project/modules/*"],
+      "~services/*": ["./src/project/services/*"],
+      "~components/*": ["./src/project/shared/components/*"],
+      "~pipes/*": ["./src/project/shared/pipes/*"],
+      "~guard/*": ["./src/project/modules/auth/*"]
+    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    "module": "es2020",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "target": "es6",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   }
 }

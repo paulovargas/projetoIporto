@@ -9,12 +9,6 @@ export const environment = {
   app_module: "panel",
   app_service: "Delivery de E-mail Transacional e Marketing",
   app_allows_reseller: false,
-  // --------------------------------------------------------------------------
-  // production
-  // api_url: 'https://api-.iporto.com.br/api/',
-  // api_doc: 'https://api-.iporto.com.br/docs',
-  // api_url_auth: 'https://api-.iporto.com.br/api/'
-  // --------------------------------------------------------------------------
 
   // --------------------------------------------------------------------------
   // dev
