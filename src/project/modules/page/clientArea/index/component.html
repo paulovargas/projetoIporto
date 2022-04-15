@@ -1,55 +1,39 @@
-<!--
-Use ngx-loading-bar/http-client when load this page.
--->
-<ngx-loading-bar [color]="'white'"></ngx-loading-bar>
-<!-- / -->
+<div class="d-flex justify-content-center">
+  <div class="row">
+  
 
-<main role="main" class="body-main">
-  <div class="container">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a [routerLink]="['/']">iPORTO</a></li>
-        <li class="breadcrumb-item active">Empresa</li>
-      </ol>
-    </nav>
+
+<form class="text-center">
+  <h2 class="text-center">Entrar</h2>
+
+  <div >
+    <input class="authentication" placeholder="E-mail" type="email" name="email" id="email" />
   </div>
+  <div class="form-group">
+    <input class="authentication" placeholder="Senha" type="password" name="password" id="password"  />
+  </div>
+  <button type="submit" class="authentication">Entrar</button>
+</form>
 
-  <section>
-    <div class="container-full">
-      <div class="container pt-5 head">
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-            <h1 class="display-4">iPORTO</h1>
-            <p>
-              Fundada em 2003, com o registro do domínio .com, em uma época onde poucas empresas vendiam registros de domínio no Brasil. Só depois de 4 anos de serviços prestados, através da marca iPORTO, que o CNPJ foi criado para poder absorver a demanda de empresas e clientes de porte maiores, com emissão de Notas Fiscais e todo aparato jurídico que o Brasil pede. Em 2014 iniciamos com o processo para registro de marca, junto ao INPI. Após 4 anos de espera, em 2018, o INPI concedeu total direito de uso da marca iPORTO, e seu logo, a nós, os criadores. Hoje a iPORTO é uma marca registrada, como poucas no Brasil.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section>
-    <div class="container-fluid bg3">
-      <div class="container">
-        <div class="row justify-content-md-center pt-80">
-          <div class="col-12">
-            <div class="text-left pb-5">
-              <h3 class="display-4">Os números</h3>
-              <p>
-                A <strong>iPORTO</strong> gerencia pouco mais de 7.000 clientes em sua carteira. Operando os mais diversos serviços como <a href="https://iporto.com.br/features/smtp">SMTP</a>, <a href="https://iporto.com.br/features/email-marketing">E-mail Marketing</a>, Ambiente Dedicado e Desenvolvimento de Aplicações para Grandes Empresas.
-              </p>
-              <p>
-                Com o foco, desde 2018, no processamento e <a href="https://iporto.com.br/page/pricing">envio de E-mails</a>, sejam eles de Marketing ou Transacional, detêm em sua Carteira grandes Marcas como SESC-RS, Trasmontano e Cultura Inglesa. Empresas que necessitam de altos níveis de SLA e qualidade.
-              </p>
-              <p>
-                Os envios já estão na casa dos milhões ao mês, processando milhares de e-mails por hora, minuto e segundo com range de IP's próprios (adquiridos diretamente junto ao Registro.BR) e alugados em Data Centers ao redor do globo.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<form class="text-center p-100px">
+<h2 class="text-center">Não é cliente ? Cadastre-se!</h2>
 
-</main>
+  <div >
+    <input class="authentication" placeholder="Nome Completo" type="text" name="name" id="name" />
+  </div>
+  <div class="form-group">
+    <input class="authentication" placeholder="Telefone" type="tel" name="tel" id="tel"  />
+  </div>
+  <div class="form-group">
+    <input class="authentication" placeholder="E-mail" type="email" name="email" id="email"  />   
+  </div>
+  <div class="form-group">
+    <input class="authentication" placeholder="Senha"  type="password" name="password" id="password"  />
+  </div>
+  <button type="submit" class="authentication">Cadastrar</button>
+</form>
+
+</div>
+</div>
+>>>>>>> tela-área-do-cliente-inicial
