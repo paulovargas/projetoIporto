@@ -12,6 +12,7 @@ export const environment = {
   // production
   api_url: 'https://api.iporto.com.br/api/',
   api_doc: 'https://api.iporto.com.br/docs',
-  api_url_auth: 'https://api.iporto.com.br/api/'
+  api_client: 'https://6259963c43fda1299a0fffd1.mockapi.io/',
+  api_url_auth: 'https://api.iporto.com.br/api/' 
   // --------------------------------------------------------------------------
 };
