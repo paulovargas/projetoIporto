@@ -20,7 +20,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { LocalAppModuleRoutes } from './routing';
 // ----------------------------------------------------------------------------
 import {
+  ClientAreaIndexComponent,
   CompanyIndexComponent,
+  PlansIndexComponent,
   ContactIndexComponent
 } from './index';
 // ----------------------------------------------------------------------------
@@ -39,7 +41,9 @@ import {
     TabsModule,
   ],
   declarations: [
+    ClientAreaIndexComponent,
     CompanyIndexComponent,
+    PlansIndexComponent,
     ContactIndexComponent
   ],
   providers: [
