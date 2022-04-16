@@ -1,0 +1,58 @@
+
+<h2 class="text-center">Planos</h2>
+
+    <div class="container">
+
+      <div class="card-deck mb-3 text-center">
+
+        <div class="card mb-4 shadow-sm" *ngFor="let plan of plans">
+
+          <div class="card-header">
+              
+            <app-plan-list-item [plan]="plan" class="plan-item" (onDeletePlan)="onPlanDeleted($event)"></app-plan-list-item>
+
+            <h4 class="my-0 font-weight-normal" [innerHTML]="plan.planName"></h4>
+
+          </div>
+          
+          <div class="card-body">
+              
+            <h1 class="card-title pricing-card-title"  [innerHTML]="plan.price"></h1><h1><small class="text-muted">/ mês</small></h1>
+            
+            <ul class="list-unstyled mt-3 mb-4">
+
+              <li  [innerHTML]="plan.functions"></li>
+
+            </ul>
+
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Contratar</button>
+          
+        </div>
+    
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,6 +19,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 // [[Componentes/Rotas da Aplicação]]
 import { LocalAppModuleRoutes } from './routing';
 // ----------------------------------------------------------------------------
+import { PlanListComponent } from './plans/plan-list/plan-list.component';
+// ----------------------------------------------------------------------------
+
 import {
   ClientAreaIndexComponent,
   CompanyIndexComponent,
@@ -44,6 +47,7 @@ import {
     ClientAreaIndexComponent,
     CompanyIndexComponent,
     PlansIndexComponent,
+    PlanListComponent,
     ContactIndexComponent
   ],
   providers: [

@@ -6,6 +6,11 @@ import { AuthenticationComponent } from 'src/app/layout/authentication/authentic
 import { User } from 'src/app/account/user/user.component';
 
 // ----------------------------------------------------------------------------
+
+import { PlanListComponent } from 'src/project/modules/page/plans/plan-list/plan-list.component';
+
+
+
 import {
   ClientAreaIndexComponent,
   CompanyIndexComponent,
@@ -55,7 +60,7 @@ export const LocalAppModuleRoutes: Routes = [
     children: [
       {
         path: 'plans',
-        component: PlansIndexComponent
+        component: PlanListComponent
       }
     ]
   },
