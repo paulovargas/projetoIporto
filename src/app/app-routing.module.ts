@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // -----------------------------------------------------------------------------
 import { LayoutSiteComponent } from '../project/core';
@@ -29,9 +30,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{
+  imports: [
+    FormsModule,
+    RouterModule.forRoot(routes,{
     scrollPositionRestoration: 'enabled'
   })],
-  exports: [RouterModule]
+  exports: [RouterModule, FormsModule]
 })
 export class AppRoutingModule { }

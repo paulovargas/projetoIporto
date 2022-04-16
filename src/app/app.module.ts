@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { NgModule } from '@angular/core';
@@ -25,7 +25,18 @@ import {
   // [[Modulo de Panel]]
   // []
 } from '../project/core';
+import { LoginComponent } from './account/login/login.component';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { HomeComponent } from './layout/home/home.component';
+import { AuthenticationComponent } from './layout/authentication/authentication.component';
 // []
+
+import { httpInterceptorProviders } from './http-interceptors';
+
+// []
+
+
+
 
 @NgModule({
   declarations: [
@@ -33,7 +44,16 @@ import {
     // [[Base]]
     LayoutSiteComponent,
     SitelHeaderComponent,
-    SitelFooterComponent
+    SitelFooterComponent,
+    LoginComponent,
+    CreateAccountComponent,
+    HomeComponent,
+    AuthenticationComponent,
+    AppComponent,
+    LoginComponent,
+    CreateAccountComponent,
+    AuthenticationComponent,
+    HomeComponent
     // []
     // [[Layout Base for Auth]]
     // []
@@ -49,10 +69,18 @@ import {
     ToastrModule.forRoot(),
     ModalModule.forRoot(),
     ProgressbarModule.forRoot(),
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [
-    {provide: APP_BASE_HREF, useValue: '/'}
+    httpInterceptorProviders,
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

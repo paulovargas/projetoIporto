@@ -14,6 +14,8 @@ export const environment = {
   // dev
   api_url: 'http://api.iporto.io/api/',
   api_doc: 'http://api.iporto.io/docs/',
-  api_url_auth: 'http://api.iporto.io/api/'
+  api_url_auth: 'http://api.iporto.io/api/',
+  api: 'https://6259963c43fda1299a0fffd1.mockapi.io/'
+
   // --------------------------------------------------------------------------
 };

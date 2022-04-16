@@ -1,5 +1,5 @@
 {
-  "name": "Site",
+  "name": "1",
   "version": "1.0.0",
   "license": "MIT",
   "description": "Site-description",
@@ -29,6 +29,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "jwt-decode": "^2.2.0",
     "@fortawesome/angular-fontawesome": "^0.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
