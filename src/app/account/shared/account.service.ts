@@ -2,6 +2,8 @@ import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
+import { Account } from './account';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,13 @@ import * as jwt_decode from 'jwt-decode';
 export class AccountService {
 
   constructor(private http: HttpClient) { }
+
+  getAll() {
+    return this.http.get<Account[]>(`${environment.api}/users`);
+  }
+  getByEmail(email: string) {
+    return this.http.get<Account>(`${environment.api}/users/${email}`);
+  }
 
   async login(user: any) {
     const result = await this.http.get<any>(`${environment.api}/users`, user).toPromise();

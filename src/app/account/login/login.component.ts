@@ -14,12 +14,17 @@ export class LoginComponent implements OnInit {
     password:''
   };
 
+  account = false;
+
   constructor(
     private accoutService: AccountService,
     private router: Router
   ) {}
 
   ngOnInit() {
+    if(window.localStorage.getItem('email') && window.localStorage.getItem('password'))
+      this.account = true;
+    console.log('this.account = ', this.account);
   }
 
   async onSubmit(){

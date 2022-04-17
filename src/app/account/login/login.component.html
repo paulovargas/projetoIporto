@@ -4,6 +4,16 @@
       <div class="container">
 
         <form (ngSubmit)="onSubmit()" #form="ngForm">
+          <section>
+            <div *ngIf="" class="alert alert-warning" role="alert">
+              Erro ao cadastrar usuário, tente mais tarde...
+            </div>
+            <div *ngIf="this.account" class="alert alert-warning" role="alert">
+              Usuário cadastrado com sucesso! Agora faça seu login !
+        </div>
+          
+      
+          </section>
 
           <div class="form-group">
         
