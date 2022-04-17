@@ -1,23 +1,63 @@
-<h2 class="text-center">Usuário Logado</h2>
+<h2 class="text-center">Criar minha conta</h2>
 
-<form >
+<div class="container">
   
-  <div class="form-group text-center">
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
     
-    <label>Nome</label>
-  
-  </div>
-  
-  <div class="form-group text-center">
+    <div class="form-group">
+      
+      <label>Nome</label>
+      
+      <input class="form-control" type="name" name="name" id="name" [(ngModel)]="account.name" required />
     
-    <label>E-mail</label>
-  
-  </div>
-  
-  <div class="form-group text-center">
+    </div>
     
-    <button type="button" class="btn btn-link btn-lg" >Sair</button>
-  
+    <div class="form-group">
+      
+      <label>Telefone</label>
+      
+      <input class="form-control" type="phone" name="phone" id="phone" [(ngModel)]="account.phone" required />
+    
+    </div>
+    
+    <div class="form-group">
+      
+      <label>E-mail</label>
+      
+      <input class="form-control" type="email" name="email" id="email" [(ngModel)]="account.email" required />
+    
+    </div>
+    
+    <div class="form-group">
+      
+      <label>Senha</label>
+      
+      <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.password" required />
+    
+    </div>
+    <section>
+      <div *ngIf="!this.account" class="alert alert-warning" role="alert">
+        Erro ao cadastrar usuário, tente mais tarde...
+      </div>
+      <div *ngIf="" class="alert alert-warning" role="alert">
+        Usuário cadastrado com sucesso!
   </div>
+    
+
+    </section>
+   
+    <ng-template #loadingError>
+      <div *ngIf="error$ | async; else loadingNoError">
+        Erro na conexão ! Tente mais tarde..
+      </div>
+    </ng-template>
+    <ng-template #loading>
+        <span>Carregando... </span>
+    </ng-template>
+
+    
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Criar minha conta</button>
   
-</form>
+  </form>
+
+</div>
