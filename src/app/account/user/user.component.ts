@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { catchError } from 'rxjs/operators';
+import { Users } from '../shared/users';
 
 @Component({
   selector: 'app-user',
@@ -17,10 +19,8 @@ export class User implements OnInit {
     email: '',
     password: ''
   };
-
-  users : AccountService;
-
-  error$ = new Subject<boolean>();
+  
+  users: Users[];
 
   constructor(
     private accountService: AccountService,
@@ -28,47 +28,19 @@ export class User implements OnInit {
     private http: HttpClient
   ) { }
 
-  ngOnInit() {
-    this.accountService.getAll().subscribe(account => { 
-      this.account = this.account;
-      console.log(account);
-      console.log('',this.account);
-    });
+
+  getByEmail(email: string) {
+    return this.http.get<User>(`${environment.api}/users/${email}`);
   }
 
-  async onSubmit() {
-    try {
-      const result = await this.accountService.createAccount(this.account);
-      try{
-        const cadastred = await this.http.get<any>(`${environment.api}/users/`, result).toPromise();
-        if (cadastred) {
-          console.log(result.email);
-          console.log(result.password);
-          window.localStorage.setItem('email', result.email);
-          window.localStorage.setItem('password', result.password);
-          console.log('Cadastrado');
-
-          //console.log(account);
-          console.log(this.account);
-          this.router.navigate(['page/clientArea']);
-        } else {
-          console.log('Erro de cadastro');
-        }
-        return cadastred;
-        //if(cadastred)
-        {
-         
-        }
-        this.router.navigate(['']);
-      }
-      catch{
-
-      }
-      console.log();
-    } catch (error) {
-      this.error$.next(true);
-      console.error(error);
+  async ngOnInit() {
+    this.users = this.accountService.getAll.prototype;
+    const cadastred = await this.http.get<any>(`${environment.api}/users/`).toPromise();
+      if (cadastred) {
+        this.users = cadastred;
+        } 
+        else {
+        console.log('Erro de cadastro');
     }
-    
   }
 }

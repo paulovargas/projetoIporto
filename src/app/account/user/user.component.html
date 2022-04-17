@@ -1,63 +1,46 @@
-<h2 class="text-center">Criar minha conta</h2>
+<h2 class="text-center">Bem Vindo(a) !</h2>
 
-<div class="container">
-  
-  <form (ngSubmit)="onSubmit()" #form="ngForm">
-    
-    <div class="form-group">
-      
-      <label>Nome</label>
-      
-      <input class="form-control" type="name" name="name" id="name" [(ngModel)]="account.name" required />
-    
+<div class="container" *ngFor="let user of users">
+
+    <div class="text-center">
+        
+      <app-user-list-item [user]="user" class="user-item" (onDeleteuser)="onuserDeleted($event)"></app-user-list-item>
+
+      <h1 class="card-title pricing-card-title"  [innerHTML]="user.name"></h1>
+
     </div>
     
-    <div class="form-group">
+    <div class="form-group">      
       
-      <label>Telefone</label>
-      
-      <input class="form-control" type="phone" name="phone" id="phone" [(ngModel)]="account.phone" required />
+      <ul class="list-unstyled mt-3 mb-4">
+
+        <div>
+
+        <li>Email :</li>
+
+        <li [innerHTML]="user.email"></li>
+
+        </div>
+
+        <li>
+          
+        </li>
+        <li>
+          
+        </li>
+
+        <div>
+
+        <li>Telefone :</li>
+
+        <li [innerHTML]="user.phone"></li>
+        
+        </div>
+
+      </ul>
+
+      <button type="button" class="btn btn-lg btn-block btn-outline-primary" [routerLink]="['']">Sair</button>
     
-    </div>
-    
-    <div class="form-group">
-      
-      <label>E-mail</label>
-      
-      <input class="form-control" type="email" name="email" id="email" [(ngModel)]="account.email" required />
-    
-    </div>
-    
-    <div class="form-group">
-      
-      <label>Senha</label>
-      
-      <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.password" required />
-    
-    </div>
-    <section>
-      <div *ngIf="!this.account" class="alert alert-warning" role="alert">
-        Erro ao cadastrar usuário, tente mais tarde...
-      </div>
-      <div *ngIf="" class="alert alert-warning" role="alert">
-        Usuário cadastrado com sucesso!
   </div>
-    
-
-    </section>
-   
-    <ng-template #loadingError>
-      <div *ngIf="error$ | async; else loadingNoError">
-        Erro na conexão ! Tente mais tarde..
-      </div>
-    </ng-template>
-    <ng-template #loading>
-        <span>Carregando... </span>
-    </ng-template>
-
-    
-    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Criar minha conta</button>
-  
-  </form>
 
 </div>
