@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { AccountService } from './../account/shared/account.service';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+
+  error$ = new Subject<boolean>();
 
   constructor(
     private accountService: AccountService
@@ -31,11 +33,13 @@ export class AuthInterceptor implements HttpInterceptor {
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('Ocorreu um erro:', error.error.message);
+    this.error$.next(true);
     } else {
       console.error(
         `Código do erro ${error.status}, ` +
         `Erro: ${JSON.stringify(error.error)}`);
     }
+    this.error$.asObservable();
     return throwError('Ocorreu um erro, tente novamente');
   }
 }

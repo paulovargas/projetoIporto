@@ -42,7 +42,9 @@ export const LocalAppModuleRoutes: Routes = [
             { path: 'login', component: LoginComponent},
             { path: 'create-account', component: CreateAccountComponent }
           ]
-        }],
+        },       
+        { path: '**', redirectTo: '' }
+      ],
       }
     ]
   },

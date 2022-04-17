@@ -11,8 +11,8 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   async login(user: any) {
-    const result = await this.http.post<any>(`${environment.api}/users`, user).toPromise();
-    if (result) {
+    const result = await this.http.get<any>(`${environment.api}/users`, user).toPromise();
+    if(result) {
       window.localStorage.setItem('token', 'meu-token');
       return true;
     }
