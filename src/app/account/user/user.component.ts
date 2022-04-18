@@ -43,4 +43,7 @@ export class User implements OnInit {
         console.log('Erro de cadastro');
     }
   }
+  logof(){
+    this.accountService.logof();
+  }
 }

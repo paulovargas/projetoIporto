@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import { Account } from './account';
+import { Router } from '@angular/router';
+import { locale } from 'moment';
 
 
 @Injectable({
@@ -10,7 +12,11 @@ import { Account } from './account';
 })
 export class AccountService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    )
+    { }
 
   getAll() {
     return this.http.get<Account[]>(`${environment.api}/users`);
@@ -28,6 +34,12 @@ export class AccountService {
 
     return false;
   }
+
+  logof() {
+    localStorage.clear();
+    this.router.navigate(['page/clientArea']);
+    location.reload();
+}
 
   async createAccount(account: any) {
     const result = await this.http.post<any>(`${environment.api}/users`, account).toPromise();
