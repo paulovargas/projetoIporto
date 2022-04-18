@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import { Account } from './account';
 import { Router } from '@angular/router';
-import { locale } from 'moment';
-
+import { Users } from '../shared/users';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,13 @@ export class AccountService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
+
     )
     { }
+
+    private users: [];
 
   getAll() {
     return this.http.get<Account[]>(`${environment.api}/users`);
@@ -26,8 +29,24 @@ export class AccountService {
   }
 
   async login(user: any) {
-    const result = await this.http.get<any>(`${environment.api}/users`, user).toPromise();
-    if(result) {
+    //this.users = this.accountService.getAll.prototype;
+    const cadastred = await this.http.get<any>(`${environment.api}/users/`).toPromise();
+    //this.users = cadastred;
+
+    console.log('Usuario =', user.email);
+    
+    function returnUser(value){
+      if(value.email == user.email)
+      return value;
+    }
+
+    var userCadastred = cadastred.filter(returnUser);
+    console.log('Variavel userCadastred', userCadastred);
+    userCadastred.forEach(e => {
+      console.log('Dentro do forEach = ', e);
+      this.users = e;
+    });
+    if(this.users) {
       window.localStorage.setItem('token', 'meu-token');
       return true;
     }

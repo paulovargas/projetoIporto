@@ -1,10 +1,8 @@
 import { AccountService } from './../shared/account.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
-import { catchError } from 'rxjs/operators';
 import { Users } from '../shared/users';
 
 @Component({

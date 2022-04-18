@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../shared/account.service';
+import { Users } from '../shared/users';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,10 @@ export class LoginComponent implements OnInit {
     password:''
   };
 
+  users: Users[];
+
   account = false;
+  erroLogin = false;
 
   constructor(
     private accoutService: AccountService,
@@ -31,11 +36,10 @@ export class LoginComponent implements OnInit {
     try{
       const result = await this.accoutService.login(this.login);
       console.log(`Login efetuado: ${result}`);
+      this.erroLogin = true;
       this.router.navigate(['page/clientArea']);
     }catch(error){
       console.log(error);
     }
   }
-  
-
 }
