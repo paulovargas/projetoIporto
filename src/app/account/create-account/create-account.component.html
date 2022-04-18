@@ -3,12 +3,23 @@
 <div class="container">
   
   <form (ngSubmit)="onSubmit()" #form="ngForm">
+
+    <section>
+      <div *ngIf="this.errorCreate" class="alert alert-warning" role="alert">
+        Erro ao cadastrar! Dados incorretos !
+      </div>
+      <div *ngIf="!this.account" class="alert alert-warning" role="alert">
+        Este usuário já é cadastrado !
+  </div>
+    
+
+    </section>
     
     <div class="form-group">
       
       <label>Nome</label>
       
-      <input class="form-control" type="name" name="name" id="name" [(ngModel)]="account.name" required />
+      <input class="form-control" type="name" name="name" id="name" [(ngModel)]="account.name"/>
     
     </div>
     
@@ -16,7 +27,7 @@
       
       <label>Telefone</label>
       
-      <input class="form-control" type="phone" name="phone" id="phone" [(ngModel)]="account.phone" required />
+      <input class="form-control" type="phone" name="phone" id="phone" [(ngModel)]="account.phone"/>
     
     </div>
     
@@ -24,7 +35,7 @@
       
       <label>E-mail</label>
       
-      <input class="form-control" type="email" name="email" id="email" [(ngModel)]="account.email" required />
+      <input class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" name="email" id="email" [(ngModel)]="account.email"/>
     
     </div>
     
@@ -32,7 +43,7 @@
       
       <label>Senha</label>
       
-      <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.password" required />
+      <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.password"/>
     
     </div>
     <section>

@@ -22,6 +22,9 @@ export class CreateAccountComponent implements OnInit {
 
   error$ = new Subject<boolean>();
 
+  errorCreate = false;
+  
+
   constructor(
     private accountService: AccountService,
     private router: Router,
@@ -37,6 +40,7 @@ export class CreateAccountComponent implements OnInit {
   }
 
   async onSubmit() {
+    
     try {
       const result = await this.accountService.createAccount(this.account);
       try{

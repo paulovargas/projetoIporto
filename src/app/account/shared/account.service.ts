@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 import { Account } from './account';
 import { Router } from '@angular/router';
-import { Users } from '../shared/users';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,7 @@ export class AccountService {
     private router: Router,
     private accountService: AccountService
 
-    )
-    { }
-
-    private users: [];
+    ) { }
 
   getAll() {
     return this.http.get<Account[]>(`${environment.api}/users`);
@@ -29,28 +25,24 @@ export class AccountService {
   }
 
   async login(user: any) {
-    //this.users = this.accountService.getAll.prototype;
-    const cadastred = await this.http.get<any>(`${environment.api}/users/`).toPromise();
-    //this.users = cadastred;
-
-    console.log('Usuario =', user.email);
+    const consultApi = await this.http.get<any>(`${environment.api}/users/`).toPromise();
     
     function returnUser(value){
-      if(value.email == user.email)
-      return value;
+      if(value.email == user.email && value.password == user.password)
+      {
+        return value;
+      }
+     
     }
-
-    var userCadastred = cadastred.filter(returnUser);
-    console.log('Variavel userCadastred', userCadastred);
-    userCadastred.forEach(e => {
-      console.log('Dentro do forEach = ', e);
-      this.users = e;
+    const consultUser = consultApi.filter(returnUser);
+    consultUser.forEach(e => { e
     });
-    if(this.users) {
-      window.localStorage.setItem('token', 'meu-token');
-      return true;
-    }
-
+   if(consultUser == ''){
+     
+   }else{
+    window.localStorage.setItem('token', 'meu-token');
+    return true;
+   }       
     return false;
   }
 
@@ -91,7 +83,6 @@ export class AccountService {
     if (date === undefined) {
       return false;
     }
-
     return !(date.valueOf() > new Date().valueOf());
   }
 
@@ -102,7 +93,6 @@ export class AccountService {
     } else if (this.isTokenExpired(token)) {
       return false;
     }
-
     return true;
   }
 }
