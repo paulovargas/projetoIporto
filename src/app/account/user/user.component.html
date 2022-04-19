@@ -3,7 +3,7 @@
 <div class="container" *ngFor="let user of users">
 
     <div class="text-center">
-        
+      
       <app-user-list-item [user]="user" class="user-item" (onDeleteuser)="onuserDeleted($event)"></app-user-list-item>
 
       <h1 class="card-title pricing-card-title"  [innerHTML]="user.name"></h1>
@@ -25,6 +25,7 @@
         <li>
           
         </li>
+        
         <li>
           
         </li>

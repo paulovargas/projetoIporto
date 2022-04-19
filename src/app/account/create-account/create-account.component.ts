@@ -1,9 +1,9 @@
 import { AccountService } from './../shared/account.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { Users } from '../shared/users';
 
 @Component({
   selector: 'app-create-account',
@@ -18,12 +18,13 @@ export class CreateAccountComponent implements OnInit {
     password: ''
   };
 
-  users : AccountService;
-
-  error$ = new Subject<boolean>();
+  usersApi : Users [];
 
   errorCreate = false;
-  
+
+  userCadastred = false;
+
+  accountError = this.account;  
 
   constructor(
     private accountService: AccountService,
@@ -34,45 +35,57 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit() {
     this.accountService.getAll().subscribe(account => { 
       this.account = this.account;
-      console.log(account);
-      console.log('',this.account);
+      this.usersApi = account;
     });
   }
 
   async onSubmit() {
+    if(
+         !this.account.name.length 
+      || !this.account.phone.length
+      || !this.account.email.length
+      || !this.account.password.length
+      ){
+        this.errorCreate = true;
+        return false;
+    }
+
+    const user = this.account;
+      
+    const consultApi = this.usersApi;
+      
+      function returnUser(value){
+        if(user.email == value.email  && user.password == value.password )
+        {
+          return value;
+        }
+      }
+      const consultUser = consultApi.filter(returnUser);
+      consultUser.forEach(e => { e
+      });     
+    
+    if(consultUser.length > 0)
+    {
+      this.userCadastred = true;
+      return false;
+    }
     
     try {
       const result = await this.accountService.createAccount(this.account);
       try{
         const cadastred = await this.http.get<any>(`${environment.api}/users/`, result).toPromise();
         if (cadastred) {
-          console.log(result.email);
-          console.log(result.password);
-          window.localStorage.setItem('email', result.email);
-          window.localStorage.setItem('password', result.password);
-          console.log('Cadastrado');
-
-          //console.log(account);
-          console.log(this.account);
+          this.userCadastred = true;
+          window.localStorage.setItem('userCadastred', 'true');
           this.router.navigate(['page/clientArea']);
         } else {
           console.log('Erro de cadastro');
         }
-        return cadastred;
-        //if(cadastred)
-        {
-         
-        }
-        this.router.navigate(['']);
+        return cadastred;        
       }
-      catch{
-
-      }
-      console.log();
+      catch{}
     } catch (error) {
-      this.error$.next(true);
       console.error(error);
-    }
-    
+    }    
   }
 }

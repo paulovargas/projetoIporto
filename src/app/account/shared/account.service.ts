@@ -12,9 +12,7 @@ export class AccountService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
-    private accountService: AccountService
-
+    private router: Router
     ) { }
 
   getAll() {

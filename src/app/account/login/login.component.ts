@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AccountService } from '../shared/account.service';
 import { Users } from '../shared/users';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   users: Users[];
 
-  account = false;
+  userCadastred = false;
+  
   erroLogin = false;
 
   constructor(
@@ -27,15 +27,13 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if(window.localStorage.getItem('email') && window.localStorage.getItem('password'))
-      this.account = true;
-    console.log('this.account = ', this.account);
+    if(window.localStorage.getItem('userCadastred'))
+      this.userCadastred = true;
   }
 
   async onSubmit(){
     try{
       const result = await this.accoutService.login(this.login);
-      console.log(`Login efetuado: ${result}`);
       this.erroLogin = !result;
       this.router.navigate(['page/clientArea']);
     }catch(error){

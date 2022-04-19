@@ -26,7 +26,6 @@ export class User implements OnInit {
     private http: HttpClient
   ) { }
 
-
   getByEmail(email: string) {
     return this.http.get<User>(`${environment.api}/users/${email}`);
   }
